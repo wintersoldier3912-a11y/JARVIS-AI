@@ -20,7 +20,8 @@ export enum DomainModule {
   VISION = 'COMPUTER_VISION',
   IOT = 'HOME_AUTOMATION',
   PROJECT = 'PROJECT_ASSISTANT',
-  AR_VR = 'AR_VR_EXPERIENCE'
+  AR_VR = 'AR_VR_EXPERIENCE',
+  MEMORY_CORE = 'MEMORY_MANAGEMENT_SYSTEM'
 }
 
 export interface SubModelCall {
@@ -88,4 +89,16 @@ export interface UpdateStatus {
   currentTask: string;
   lastUpdated: Date;
   version: string;
+}
+
+export type MemoryType = 'FACT' | 'INTERACTION' | 'PREFERENCE' | 'PROTOCOL';
+
+export interface MemoryEntry {
+  id: string;
+  content: string;
+  type: MemoryType;
+  timestamp: number;
+  lastAccessed: number;
+  importance: number; // 0 to 100
+  tags: string[];
 }

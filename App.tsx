@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Globe, Shield, Activity, Cpu, Terminal, Layers, Mic, MicOff, Camera, Laptop, Home, Radio, Languages, Glasses, Power, Maximize2, Minimize2, Bell, AlertCircle } from 'lucide-react';
+import { Send, Globe, Shield, Activity, Cpu, Terminal, Layers, Mic, MicOff, Camera, Laptop, Home, Radio, Languages, Glasses, Power, Maximize2, Minimize2, Bell, AlertCircle, Database } from 'lucide-react';
 import HolographicCard from './components/HolographicCard';
 import ArcReactor from './components/ArcReactor';
 import WorkflowMonitor from './components/WorkflowMonitor';
@@ -11,6 +11,7 @@ import KnowledgeGraph from './components/KnowledgeGraph';
 import VisionModule from './components/VisionModule';
 import HomeAutomationPanel from './components/HomeAutomationPanel';
 import ARControlPanel from './components/ARControlPanel';
+import MemoryBank from './components/MemoryBank';
 import { sendMessageToGemini } from './services/geminiService';
 import { Message, SystemState, DomainModule, SubModelCall, KnowledgeNode, KnowledgeEdge, HomeDevice } from './types';
 
@@ -296,6 +297,14 @@ const App: React.FC = () => {
       );
     }
 
+    if (activeDomain === DomainModule.MEMORY_CORE) {
+       return (
+         <HolographicCard className="flex-1 bg-black/60 border-jarvis-blue/50 overflow-hidden">
+            <MemoryBank />
+         </HolographicCard>
+       );
+    }
+
     return (
        <>
           <HolographicCard className="h-56 bg-black/40 border-jarvis-blue/30">
@@ -358,6 +367,7 @@ const App: React.FC = () => {
                    { id: DomainModule.PROJECT, icon: <Laptop className="w-4 h-4"/>, label: "PROJ" },
                    { id: DomainModule.TACTICAL, icon: <Radio className="w-4 h-4"/>, label: "TACT" },
                    { id: DomainModule.AR_VR, icon: <Glasses className="w-4 h-4"/>, label: "AR/VR" },
+                   { id: DomainModule.MEMORY_CORE, icon: <Database className="w-4 h-4"/>, label: "MEM" },
                    { id: DomainModule.GENERAL, icon: <Cpu className="w-4 h-4"/>, label: "CORE" }
                  ].map(mod => (
                    <button 

@@ -32,13 +32,17 @@ const ArcReactor: React.FC<Props> = ({ state }) => {
       <div className={`absolute inset-20 rounded-full ${isError ? 'bg-red-900' : 'bg-cyan-900'} opacity-30`} />
       <div className={`absolute inset-24 rounded-full border-2 ${borderColor} opacity-60`} />
 
-      {/* The Light Source */}
+      {/* The Light Source & Core Text */}
       <div 
-        className={`w-20 h-20 rounded-full bg-white shadow-[0_0_60px_${shadowColor}] transition-all duration-300 
+        className={`relative flex items-center justify-center w-20 h-20 rounded-full bg-white shadow-[0_0_60px_${shadowColor}] transition-all duration-300 
         ${state === SystemState.ANALYZING ? 'animate-pulse scale-110' : ''}
         ${state === SystemState.LISTENING ? 'scale-90 shadow-[0_0_100px_#00f0ff]' : ''}
         `} 
-      />
+      >
+        <span className={`font-mono text-[10px] font-bold tracking-[0.2em] ${isError ? 'text-red-900' : 'text-cyan-900'} opacity-70 select-none z-10`}>
+          JARVIS
+        </span>
+      </div>
       
       {/* Holographic Data Overlay */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
