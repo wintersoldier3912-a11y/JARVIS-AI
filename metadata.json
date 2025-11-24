@@ -1,0 +1,9 @@
+{
+  "name": "J.A.R.V.I.S. Integrated System",
+  "description": "A comprehensive AI assistant featuring a holographic 3D interface, multi-domain knowledge architecture, and real-time data analysis capabilities powered by Gemini.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation",
+    "camera"
+  ]
+}
